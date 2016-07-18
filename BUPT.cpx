@@ -1,0 +1,171 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   LaTeX File for Doctor (Master) Thesis of BUPT
+%   LaTeX + CJK  北京邮电大学博士（硕士）论文模板
+%   Some Codes Based on Wang Lei's Template for THU
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Copyright 2006  by Wang Xu (gnawux@gmail.com)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% This is the file GB.cap of the CJK package
+%   for using Asian logographs (Chinese/Japanese/Korean) with LaTeX2e
+%
+% created by aloft <aloft@ctex.org> for Standard LaTeX document class.
+%
+% Version 4.5.2 (18-May-2003)
+%
+% $Id: GB.cpx,v 1.7 2003/05/20 15:51:14 aloft Exp $
+%
+
+
+\def\fileversion{4.5.2}
+\def\filedate{2003/05/18}
+\ProvidesFile{GB.cap}[\filedate\space\fileversion
+ for Standard LaTeX document class]
+
+
+% Chinese captions
+%
+% character set: GB 2312-80
+% encoding: EUC
+
+\@ifundefined{CJKnumber}
+  {\def\CJKnumber#1{\ifcase#1\or
+                    一\or二\or三\or四\or五\or
+                    六\or七\or八\or九\or十\or十一\fi}}{}
+
+\renewcommand\contentsname{目录}
+\renewcommand\listfigurename{插图}
+\renewcommand\listtablename{表格}
+\renewcommand\bibname{参考文献}
+\renewcommand\indexname{索引}
+\renewcommand\figurename{图}
+\renewcommand\tablename{表}
+
+\newcommand\CJKprepartname{第}
+\newcommand\CJKpartname{部分}
+\newcommand\CJKthepart{\CJKnumber{\@arabic\c@part}}
+
+\renewcommand\CJKprechaptername{第}
+\renewcommand\CJKchaptername{章}
+\renewcommand\CJKthechapter{\CJKnumber{\@arabic\c@chapter}}
+
+\renewcommand\appendixname{附录~\@Alph\c@chapter}
+
+\let\CJK@todaysave=\today
+\def\CJK@todaysmall{~\the\year~年~\the\month~月~\the\day~日}
+\def\CJK@todaybig{\CJKdigits{\the\year}年\CJKnumber{\the\month}月\CJKnumber{\the\day}日}
+\def\CJK@today{\CJK@todaysmall}
+\renewcommand\today{\CJK@today}
+\newcommand\CJKtoday[1][1]{%
+  \ifcase#1\def\CJK@today{\CJK@todaysave}
+  \or\def\CJK@today{\CJK@todaysmall}
+  \or\def\CJK@today{\CJK@todaybig}
+  \fi}
+
+\def\numberline#1{\ifdim\@tempdima>0pt% 
+  \settowidth\@tempdimb{#1\space}% 
+  \ifdim\@tempdima<\@tempdimb% 
+    \@tempdima=\@tempdimb% 
+  \fi% 
+  \hb@xt@\@tempdima{#1\hfil}% 
+  \fi} 
+
+%===================================================================
+% Resources redefine to Chinese:
+%-------------------------------------------------------------------
+%  1. Resources for title page
+%-------------------------------------------------------------------
+\renewcommand{\BUPT@secretname}{密级}
+\renewcommand{\BUPT@secretlimitname}{保密期限}
+\renewcommand{\BUPT@secretoff}{}
+\renewcommand{\BUPT@secreton}{学校秘密}
+\renewcommand{\BUPT@yearname}{年}
+\renewcommand{\BUPT@doctor}{博士}
+\renewcommand{\BUPT@master}{硕士}
+\renewcommand{\BUPT@thesisname}{研究生学位论文}
+\renewcommand{\BUPT@titlename}{题目}
+\renewcommand{\BUPT@titlefirst}{这里是论文题目，}
+\renewcommand{\BUPT@titlesecond}{可以分为两行}
+\renewcommand{\BUPT@idname}{学\hspace{28pt}号}
+\renewcommand{\BUPT@namename}{姓\hspace{28pt}名}
+\renewcommand{\BUPT@majorname}{专\hspace{28pt}业}
+\renewcommand{\BUPT@tutorname}{导\hspace{28pt}师}
+\renewcommand{\BUPT@schoolname}{学\hspace{28pt}院}
+\renewcommand{\BUPT@id}{}
+\renewcommand{\BUPT@name}{}
+\renewcommand{\BUPT@major}{}
+\renewcommand{\BUPT@tutor}{}
+\renewcommand{\BUPT@school}{}
+\renewcommand{\BUPT@monname}{月}
+\renewcommand{\BUPT@dayname}{日}
+\renewcommand{\BUPT@year}{}
+\renewcommand{\BUPT@mon}{}
+\renewcommand{\BUPT@day}{}
+\renewcommand{\BUPT@appendixname}{附录}
+%-------------------------------------------------------------------
+%  2. Resources for declarations
+%-------------------------------------------------------------------
+\renewcommand{\BUPT@declarationname}{声明}
+\renewcommand{\BUPT@creativename}{独创性（或创新性）声明}
+\renewcommand{\BUPT@authorizationname}{关于论文使用授权的说明}
+\renewcommand{\BUPT@creative}{%
+	本人声明所呈交的论文是本人在导师指导下进行的研究工作及取得的研究成果。尽我所知，除了文中特别加以标注和致谢中所罗列的内容以外，论文中不包含其他人已经发表或撰写过的研究成果，也不包含为获得北京邮电大学或其他教育机构的学位或证书而使用过的材料。与我一同工作的同志对本研究所做的任何贡献均已在论文中作了明确的说明并表示了谢意。
+
+	申请学位论文与资料若有不实之处，本人承担一切相关责任。
+
+	本人签名：\rule{114pt}{0.5pt}\hspace{24pt}日期：\rule{114pt}{0.5pt} %
+}
+\renewcommand{\BUPT@authorization}{%
+学位论文作者完全了解北京邮电大学有关保留和使用学位论文的规定，即：研究生在校攻读学位期间论文工作的知识产权单位属北京邮电大学。学校有权保留并向国家有关部门或机构送交论文的复印件和磁盘，允许学位论文被查阅和借阅；学校可以公布学位论文的全部或部分内容，可以允许采用影印、缩印或其它复制手段保存、汇编学位论文。（保密的学位论文在解密后遵守此规定）
+
+保密论文注释：本学位论文属于保密在\BUPT@secretlimityear年解密后适用本授权书。非保密论文注释：本学位论文不属于保密范围，适用本授权书。
+
+本人签名：\rule{114pt}{0.5pt}\hspace{24pt}日期：\rule{114pt}{0.5pt}
+
+导师签名：\rule{114pt}{0.5pt}\hspace{24pt}日期：\rule{114pt}{0.5pt}%
+}
+%-------------------------------------------------------------------
+%  3. Resources for abstractions
+%-------------------------------------------------------------------
+\renewcommand{\BUPT@titlezh}{论文中文标题可以\\一行或两行}
+\renewcommand{\BUPT@abstractzhname}{摘\hspace{15pt}要}
+\renewcommand{\BUPT@keywordszhname}{关键词}
+\renewcommand{\BUPT@titleen}{THE ENGLISH TITLE MAY \\EXPAND ONE, TWO,\\OR THREE LINES}
+\renewcommand{\BUPT@abstractenname}{ABSTRACT}
+\renewcommand{\BUPT@keywordsenname}{KEY WORDS}
+%-------------------------------------------------------------------
+%  4. Resources for ohter matters
+%-------------------------------------------------------------------
+\renewcommand{\BUPT@buptname}{北京邮电大学}
+\renewcommand{\BUPT@denotationname}{符号说明}
+\renewcommand{\BUPT@acknowledgename}{致谢}
+\renewcommand{\BUPT@publicationname}{攻读期间发表的学术论文}
+%
+% End of Resources
+%===================================================================
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 重定义一些正文相关标题
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\theoremstyle{plain} \theorembodyfont{\song\rmfamily}
+\theoremheaderfont{\hei\rmfamily} \theoremseparator{:}
+\newtheorem{definition}{\hei 定义}[chapter]
+\newtheorem{proposition}[definition]{\hei 命题}
+\newtheorem{lemma}[definition]{\hei 引理}
+\newtheorem{theorem}{\hei 定理}[chapter]
+\newtheorem{axiom}{\hei 公理}
+\newtheorem{corollary}[definition]{\hei 推论}
+\newtheorem{exercise}[definition]{}
+
+\theoremheaderfont{\CJKfamily{hei}\rmfamily}\theorembodyfont{\rmfamily}
+\theoremstyle{nonumberplain} \theoremseparator{:}
+\theoremsymbol{$\blacksquare$}
+\newtheorem{proof}{\hei 证明}
+
+\theoremsymbol{$\square$}
+\newtheorem{example}{\hei 例}
+
+\endinput

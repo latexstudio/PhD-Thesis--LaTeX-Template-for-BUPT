@@ -1,0 +1,119 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   LaTeX File for Doctor (Master) Thesis of BUPT
+%   LaTeX + CJK  北京邮电大学博士（硕士）论文模板
+%   Some Codes Based on Wang Lei's Template for THU
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Copyright 2006  by Wang Xu (gnawux@gmail.com)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{论文模板提供的命令和环境}\label{ch:cmdenv}
+
+\section{模板提供的论文信息相关的命令和环境}
+
+本模板与清华模板的一大不同就是提供了一系列语意明确的命令，用户只要把相关信息输入即可，不用看到复杂的封面等信息的书写。
+
+\subsection{封面信息}
+
+首先是信息量比较大的封面信息设置，在下面的设置内容完成之后，使用~\verb|\MakeCover|~命令可以生成封面和封面的背面~(空白页)~以及声明信息，注意，此命令要在下面的命令之后，全篇内容之前使用。
+
+密级设置命令~\verb|\SecretLevel{none}|~用于设置封面左上角的密级，可选项包括
+\begin{description}
+	\item[none] 无，显示方式是不现实任何东东；
+	\item[normal] 保密，显示方式是显示``保密''二字；
+	\item[hard] 绝密，显示方式是显示``绝密''二字，作者不确定确切的级别有哪几种，但这个命令是易于扩展的。
+\end{description}
+此命令的缺省值是~``none''，如果不写此命令，将认为不保密。
+
+保密年限设置命令~\verb|\SecretLimit{3}|~用于设置保密年限，如果是非保密论文，不要使用此命令，此命令产生的效果是在页面左上角的保密年限写上诸如三年的字样，同时在授权声明页面的保密论文注释中填入年限。(超过~10~的和非正的或浮点的参数没有经过任何测试，请慎用。)
+
+申请学位设置命令~\verb|\Degree{doctor}|~用于设置申请的学位是博士还是硕士，这将影响封面和页眉上的信息，可选参数是
+\begin{description}
+	\item[doctor] 博士论文。
+	\item[PhD] 也是博士论文，是个别名，没有什么区别，迎合某些人的不同胃口~(我自己设想的，不要对号入座的说)。
+	\item[master] 硕士论文。
+\end{description}
+缺省值是~``doctor''，作者本人要写的是博士论文，这里对不起硕士兄弟姐妹们了，要多输入一条命令。
+
+封面标题书写命令~\verb|\CoverTitle{第一行}{第二行}|~分两行写入封面页上的标题，学校的规定是不超过三十六个字，但由于横线长度的关系，模板目前为止，不支持那么长，请大家慎重。目前不支持，将来也不准备支持自动断行。
+
+封面其他信息命令包括: 学号~(\verb|\StudentID{048050|)，姓名~(\verb|\Name{王旭}|)，专业~(\verb|\MajorIn{电路与系统}|)，导师~(\verb|\Tutor{张平}|)~以及学院~(\verb|\School{电信工程学院}|)。
+
+封面信息位置命令~\verb|\InfoAlign{center}|~用于指定封面上的学号等信息的位置，目前有两个选项:
+\begin{description}
+	\item[center] 姓名学号等信息居中显示。
+	\item[left] 姓名学号等信息向左对齐。
+\end{description}
+目前没有其他选项，因为似乎没有其他需求，这个学校的要求中没有指定，所以请大家自行设定。缺省值是~``center''。
+
+接着就是提交日期命令~\verb|\Date{2006}{4}{7}|，依次输入年月日即可。
+
+上面这些命令的顺序不是特别重要，最后别忘了~\verb|\MakeCover|~命令就好了。
+
+\subsection{摘要、关键词、目录以及符号说明}
+
+摘要之前要输入标题名称，中文标题可以占两行，英文标题可以占多达三行，标题里面断行请使用~\verb|\\|，本模板不限制行数，所以请您自己控制行数和断行，特别要注意标题不可以顶到两边，要有一定空当。中英文标题的命令分别是~\verb|\TitleZh{中文标题}|~和~\verb|\TitleEn{English Title}|，请注意大小写，这个有时候作者自己也会写错。
+
+作者提供了环境~\texttt{AbstractZh}~和~\texttt{AbstractEn}~在两个环境之中分别容纳中文摘要和英文摘要，并且，在对应环境之中可以使用~\verb|\KeywordZh{一个关键词}|~和~\verb|\KeywordEn{a keyword}|~插入关键词，一次插入一个，每用一次命令插入一个关键词，最终会被在摘要后面显示出来。
+
+摘要之后请用标准的~\verb|\tableofcontents|~命令生成目录。
+
+目录之后正文之前是符号说明，作者定义了~\texttt{Donation}~环境来存放符号说明，在环境之中，可以使用命令~\verb|\DonateItem{符号}{说明}|~来存放符号说明，每个符号说明加一条，这里符号说明可以很长，长到换行，但不要使用~\verb|\\|~强制换行。符号说明也可以超过一页，不过一般人可能没有这个需求，这里没有测试过。
+
+\section{模板提供的附录类命令和环境}
+
+模板还提供了~\texttt{Acknowledgement}~和~\texttt{Publications}~命令，用于存放致谢和论文发表情况，前者在环境中直接书写即可，后者实际是对标准的~\texttt{enumerate}~命令的包装，直接写~\verb|\item|~来列出自己的论文就可以了。
+
+
+\section{参考文献相关}
+
+此外，对于参考文献，可以使用普通的参考文献方式或是~BIB\TeX。对于~\texttt{bibtex}，作者提供了自己的~BST~文件，该文件使用~\texttt{makebst}~生成，去掉了~\texttt{format.edition}~中的一行，以减少其处理内容，符合中英文混排的要求。
+
+对于英文作者，bst~会自动调整作者姓名的顺序至``姓, 名''的格式，超出三个作者会自动使用~\textit{et al.}~代替。对于中文参考文献，请手工处理。具体参考样例文件。
+
+英文作者之间使用分号~(``\texttt{;}'')~分隔，以和姓名的分隔符相区分。
+
+本模板还继承了清华模板的~\verb|\ucite{bibs}|~命令，把参考文献引用放到右上角去。
+
+
+\section{其他内容的样本}
+\label{smpl:sample}
+
+这一节是样本集合，主要来自于王磊的清华模板。
+
+\subsection{插图样本}
+\label{smpl:sample:figure}
+
+这是一个插图样本
+
+\begin{figure}[htb]
+\centering
+\includegraphics[height=3.34cm]{bupt-logo}
+\caption{北京邮电大学的校徽}
+\label{fig:smpl:buptlogo}
+\end{figure}
+
+如图\ref{fig:smpl:buptlogo}所示：
+
+\subsection{公式样本}
+\label{smpl:sample:equation}
+
+贝叶斯公式如下：
+\begin{equation}
+ p(y|\mathbf{x}) = \frac{p(\mathbf{x},y)}{p(\mathbf{x})}=
+\frac{p(\mathbf{x}|y)p(y)}{p(\mathbf{x})} \label{equ:smpl:bayes}
+\end{equation}
+
+\noindent式(\ref{equ:smpl:bayes})中$p(y|\mathbf{x})$为后验；$p(\mathbf{x})$为先验
+；分母$p(\mathbf{x})$为归一化因子。
+
+\subsection{引文样本}
+
+引用一个中文书\ucite{bib:sun96gsm}，和一个英文书\ucite{bib:sklar02}。
+
+引用期刊\ucite{bib:satyan01}和会议文章\ucite{bib:data_centric}
+
+如果我毕业了，你就可以引用我的论文\ucite{bib:thesis}。
+
+我们的规定里面还有标准\ucite{bib:sip}和专利\ucite{bib:patent}
